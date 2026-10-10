@@ -1,0 +1,33 @@
+FROM node:22-alpine
+# /app ya viene con la imagen
+#/usr
+#/lib
+
+#cd /app
+WORKDIR /app 
+
+
+# COPY source dest
+# Destino es /app
+
+COPY app.js ./
+
+COPY package.json ./
+
+# Instalar las dependencias
+RUN npm install
+
+#Copia todo el contenido del directorio actual al directorio /app , pero no copia los archivos que estan en el .dockerignore
+#copia los nodemodules
+COPY . .
+
+#CMD ["execute"]
+#Comando run de la imagen
+
+#realizar testing
+
+RUN npm run test
+
+CMD [ "node", "app.js" ]
+
+

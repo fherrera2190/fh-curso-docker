@@ -84,7 +84,7 @@ MSYS_NO_PATHCONV=1 docker container run \
 node:18-alpine \
 sh -c "yarn install && yarn start:dev"
 
-docker exect -it 8dc bash
+docker exec -it 8dc /bin/sh
 
 
 
