@@ -1,0 +1,12 @@
+
+docker build -t back-test-img .
+
+docker run --rm -p 3001:3000 --env-file .env.dev --name back-prueba back-test-img
+
+
+# Baja contenedores removiendo volúmenes y huérfanos
+docker compose down --remove-orphans
+
+# Si la red sigue trabada, desconectá o borrá los contenedores que hayan quedado colgados:
+docker container prune -f
+docker network rm hidedocs_app-network
